@@ -1,3 +1,8 @@
+<video controls autoplay>
+  <source src="demo-app.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 # API Involuntir
 
 Ini adalah API REST sederhana untuk sistem Manajemen Acara Relawan, dibangun dengan Laravel.
@@ -55,8 +60,7 @@ Bagian tersulit adalah memastikan pengaturan lingkungan pengembangan yang benar,
 *   **Validasi yang Lebih Lanjut:** Menggunakan Form Requests untuk validasi input yang lebih rapi dan terpisah.
 *   **Notifikasi:** Mengimplementasikan notifikasi (misalnya, email) ketika pengguna bergabung dengan acara atau saat acara baru dibuat.
 *   **Manajemen Token dengan Redis:** Menggunakan Redis untuk manajemen token guna meningkatkan kinerja dan skalabilitas.
-*   **Internasionalisasi:** Mendukung berbagai bahasa untuk pesan respons API.
-*   **Rate Limiting:** Menerapkan pembatasan laju pada titik akhir API untuk mencegah penyalahgunaan.
+*   **Rate Limiting:** Menerapkan pembatasan pada Endpoint API untuk mencegah penyalahgunaan.
 
 ### 3. Mengapa Anda memilih pendekatan teknis ini?
 

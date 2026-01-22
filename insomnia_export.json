@@ -8,15 +8,13 @@
       "_id": "env_1",
       "_type": "environment",
       "name": "Base Environment",
-      "data": {
-        "base_url": "http://localhost:8000/api"
-      }
+      "data": {}
     },
     {
       "_id": "req_1",
       "_type": "request",
       "name": "Register User",
-      "url": "{{ base_url }}/register",
+      "url": "http://localhost:8000/api/register",
       "method": "POST",
       "body": {
         "mimeType": "application/json",
@@ -33,7 +31,7 @@
       "_id": "req_2",
       "_type": "request",
       "name": "Login User",
-      "url": "{{ base_url }}/login",
+      "url": "http://localhost:8000/api/login",
       "method": "POST",
       "body": {
         "mimeType": "application/json",
@@ -50,7 +48,7 @@
       "_id": "req_3",
       "_type": "request",
       "name": "Create Event",
-      "url": "{{ base_url }}/events",
+      "url": "http://localhost:8000/api/events",
       "method": "POST",
       "body": {
         "mimeType": "application/json",
@@ -71,7 +69,7 @@
       "_id": "req_4",
       "_type": "request",
       "name": "Get Events",
-      "url": "{{ base_url }}/events",
+      "url": "http://localhost:8000/api/events",
       "method": "GET",
       "headers": [
         {
@@ -84,7 +82,7 @@
       "_id": "req_5",
       "_type": "request",
       "name": "Get Event by ID",
-      "url": "{{ base_url }}/events/1",
+      "url": "http://localhost:8000/api/events/1",
       "method": "GET",
       "headers": [
         {
@@ -97,7 +95,7 @@
       "_id": "req_8",
       "_type": "request",
       "name": "Update Event",
-      "url": "{{ base_url }}/events/1",
+      "url": "http://localhost:8000/api/events/1",
       "method": "PUT",
       "body": {
         "mimeType": "application/json",
@@ -118,7 +116,7 @@
       "_id": "req_9",
       "_type": "request",
       "name": "Delete Event",
-      "url": "{{ base_url }}/events/1",
+      "url": "http://localhost:8000/api/events/1",
       "method": "DELETE",
       "headers": [
         {
@@ -131,7 +129,7 @@
       "_id": "req_6",
       "_type": "request",
       "name": "Join Event",
-      "url": "{{ base_url }}/events/1/join",
+      "url": "http://localhost:8000/api/events/1/join",
       "method": "POST",
       "body": {
         "mimeType": "application/json",
@@ -152,7 +150,7 @@
       "_id": "req_7",
       "_type": "request",
       "name": "Logout User",
-      "url": "{{ base_url }}/logout",
+      "url": "http://localhost:8000/api/logout",
       "method": "POST",
       "headers": [
         {
