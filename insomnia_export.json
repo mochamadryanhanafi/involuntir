@@ -94,6 +94,40 @@
       ]
     },
     {
+      "_id": "req_8",
+      "_type": "request",
+      "name": "Update Event",
+      "url": "{{ base_url }}/events/1",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"My Updated Event Title\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer YOUR_AUTH_TOKEN"
+        }
+      ]
+    },
+    {
+      "_id": "req_9",
+      "_type": "request",
+      "name": "Delete Event",
+      "url": "{{ base_url }}/events/1",
+      "method": "DELETE",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer YOUR_AUTH_TOKEN"
+        }
+      ]
+    },
+    {
       "_id": "req_6",
       "_type": "request",
       "name": "Join Event",

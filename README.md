@@ -8,7 +8,8 @@ Ini adalah API REST sederhana untuk sistem Manajemen Acara Relawan, dibangun den
 2.  Instal dependensi: `composer install`
 3.  Salin `.env.example` ke `.env` dan konfigurasikan database Anda.
 4.  Jalankan migrasi database: `php artisan migrate`
-5.  Mulai server: `php artisan serve`
+5.  Jalankan seeder database: `php artisan db:seed` (Ini akan mengisi database dengan data dummy, termasuk user dan event).
+6.  Mulai server: `php artisan serve`
 
 ## Menjalankan proyek dengan Docker
 
@@ -26,25 +27,36 @@ Ini adalah API REST sederhana untuk sistem Manajemen Acara Relawan, dibangun den
 
 ### Acara
 
-*   `GET /api/events` - Dapatkan daftar semua acara (membutuhkan otentikasi).
+*   `GET /api/events` - Dapatkan daftar semua acara (paginasi didukung, membutuhkan otentikasi).
 *   `POST /api/events` - Buat acara baru (membutuhkan otentikasi).
 *   `GET /api/events/{id}` - Dapatkan acara tunggal berdasarkan ID (membutuhkan otentikasi).
+*   `PUT /api/events/{id}` - Memperbarui acara (membutuhkan otentikasi, hanya pemilik acara).
+*   `DELETE /api/events/{id}` - Menghapus acara (membutuhkan otentikasi, hanya pemilik acara).
 *   `POST /api/events/{id}/join` - Bergabung dengan acara (membutuhkan otentikasi).
+
+## Fitur Tambahan yang Diimplementasikan
+
+*   **API Resources:** Digunakan untuk memformat respons JSON secara konsisten.
+*   **Pagination:** Endpoint `/api/events` sekarang mendukung paginasi untuk daftar acara.
+*   **Seeders:** Database dapat diisi dengan data dummy untuk pengguna dan acara menggunakan `php artisan db:seed`.
+*   **Policy / Authorization:** Kebijakan telah diterapkan untuk mengontrol akses ke acara. Hanya pemilik acara yang dapat memperbarui atau menghapus acara mereka.
+*   **Format Respon Error Konsisten:** Penanganan kesalahan kustom dan helper respons API memastikan semua respons kesalahan mengikuti format standar.
+*   **Clean Architecture:** Struktur kode telah direfaktor menggunakan lapisan Service dan Repository untuk pemisahan tanggung jawab yang jelas.
 
 ## Jawaban Pertanyaan
 
 ### 1. Apa bagian tersulit dari tugas ini?
 
-Bagian tersulit adalah memastikan pengaturan lingkungan pengembangan yang benar, terutama saat berurusan dengan versi PHP, Composer, dan dependensi lainnya yang berbeda. Penyiapan awal database dengan Docker juga membutuhkan konfigurasi yang cermat.
+Bagian tersulit adalah memastikan pengaturan lingkungan pengembangan yang benar, terutama saat berurusan dengan versi PHP, Composer, dan dependensi lainnya yang berbeda. Penyiapan awal database dengan Docker juga membutuhkan konfigurasi yang cermat. Selain itu, restrukturisasi ke arsitektur bersih membutuhkan perencanaan dan implementasi yang cermat untuk memastikan pemisahan kekhawatiran yang tepat.
 
 ### 2. Jika Anda diberi waktu 1 minggu, apa yang akan Anda tingkatkan?
 
-*   **API Resources:** Saya akan menggunakan API Resources untuk memiliki kontrol lebih besar atas respons JSON dan untuk menstandardisasi format output.
-*   **Pagination:** Saya akan menerapkan paginasi untuk daftar acara guna menangani data dalam jumlah besar dengan lebih efisien.
-*   **Seeders:** Saya akan membuat seeder untuk mengisi database dengan data dummy agar lebih mudah dalam pengujian dan pengembangan.
-*   **Kebijakan/Otorisasi (Policy/Authorization):** Saya akan mengimplementasikan kebijakan untuk memiliki kontrol yang lebih terperinci tentang siapa yang dapat melakukan tindakan tertentu (misalnya, hanya pembuat acara yang dapat menghapusnya).
-*   **Penanganan Kesalahan (Error Handling):** Saya akan meningkatkan penanganan kesalahan untuk memberikan pesan kesalahan yang lebih spesifik dan membantu.
-*   **Pengujian (Testing):** Saya akan menulis pengujian otomatis untuk memastikan API berfungsi dengan benar dan untuk mencegah regresi.
+*   **Pengujian (Testing):** Saya akan menulis pengujian unit dan fungsional yang komprehensif untuk semua lapisan (Repository, Service, Controller) untuk memastikan keandalan dan mencegah regresi.
+*   **Validasi yang Lebih Lanjut:** Menggunakan Form Requests untuk validasi input yang lebih rapi dan terpisah.
+*   **Notifikasi:** Mengimplementasikan notifikasi (misalnya, email) ketika pengguna bergabung dengan acara atau saat acara baru dibuat.
+*   **Manajemen Token dengan Redis:** Menggunakan Redis untuk manajemen token guna meningkatkan kinerja dan skalabilitas.
+*   **Internasionalisasi:** Mendukung berbagai bahasa untuk pesan respons API.
+*   **Rate Limiting:** Menerapkan pembatasan laju pada titik akhir API untuk mencegah penyalahgunaan.
 
 ### 3. Mengapa Anda memilih pendekatan teknis ini?
 
@@ -54,3 +66,4 @@ Saya memilih untuk menggunakan Laravel karena ini adalah framework yang kuat dan
 *   **Eloquent ORM:** Saya menggunakan Eloquent untuk interaksi database karena menyediakan API yang indah dan intuitif untuk bekerja dengan database. Ini memudahkan untuk mendefinisikan hubungan antar model dan untuk melakukan kueri yang kompleks.
 *   **Docker:** Saya menggunakan Docker untuk database untuk memastikan lingkungan pengembangan yang konsisten dan dapat direproduksi. Ini memudahkan untuk menyiapkan dan menjalankan database tanpa harus menginstalnya langsung di mesin host.
 *   **API RESTful:** Saya merancang API agar RESTful untuk memastikan bahwa API tersebut dapat diskalakan, mudah dipelihara, dan mudah digunakan oleh klien yang berbeda.
+*   **Clean Architecture:** Mengadopsi arsitektur bersih dengan lapisan Service dan Repository memungkinkan pemisahan tanggung jawab yang lebih baik, membuat kode lebih mudah dipelihara, diuji, dan diskalakan. Ini memisahkan logika bisnis dari implementasi detail, yang sangat penting untuk proyek yang berkembang.

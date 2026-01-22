@@ -17,9 +17,13 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
+    ->withProviders([
+        App\Providers\AuthServiceProvider::class,
+    ])
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (Throwable $e, $request) {
-            $handler = new Handler(app());
-            return $handler->render($request, $e);
+        $exceptions->renderable(function (AuthorizationException $e, $request) {
+            if ($request->is('api/*')) {
+                return ApiResponseHelper::sendError('This action is unauthorized.', [], 403);
+            }
         });
     })->create();
