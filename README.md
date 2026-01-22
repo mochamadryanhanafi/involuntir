@@ -19,7 +19,7 @@ Ini adalah API REST sederhana untuk sistem Manajemen Acara Relawan, dibangun den
 2.  Bangun Image dan jalankan kontainer: `docker-compose up -d --build`
 3.  Aplikasi akan tersedia di `http://localhost:8000`.
 
-## Titik Akhir API (API Endpoints)
+## API Endpoints
 
 ### Otentikasi
 
