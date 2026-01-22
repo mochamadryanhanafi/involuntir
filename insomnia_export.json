@@ -1,0 +1,131 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-01-22T00:00:00.000Z",
+  "__export_source": "gemini",
+  "resources": [
+    {
+      "_id": "env_1",
+      "_type": "environment",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8000/api"
+      }
+    },
+    {
+      "_id": "req_1",
+      "_type": "request",
+      "name": "Register User",
+      "url": "{{ base_url }}/register",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"John Doe\",\n\t\"email\": \"john.doe@example.com\",\n\t\"password\": \"password\",\n\t\"password_confirmation\": \"password\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_2",
+      "_type": "request",
+      "name": "Login User",
+      "url": "{{ base_url }}/login",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"john.doe@example.com\",\n\t\"password\": \"password\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_3",
+      "_type": "request",
+      "name": "Create Event",
+      "url": "{{ base_url }}/events",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"My Awesome Event\",\n\t\"description\": \"This is a description of my awesome event.\",\n\t\"event_date\": \"2026-03-15\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer YOUR_AUTH_TOKEN"
+        }
+      ]
+    },
+    {
+      "_id": "req_4",
+      "_type": "request",
+      "name": "Get Events",
+      "url": "{{ base_url }}/events",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer YOUR_AUTH_TOKEN"
+        }
+      ]
+    },
+    {
+      "_id": "req_5",
+      "_type": "request",
+      "name": "Get Event by ID",
+      "url": "{{ base_url }}/events/1",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer YOUR_AUTH_TOKEN"
+        }
+      ]
+    },
+    {
+      "_id": "req_6",
+      "_type": "request",
+      "name": "Join Event",
+      "url": "{{ base_url }}/events/1/join",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer YOUR_AUTH_TOKEN"
+        }
+      ]
+    },
+    {
+      "_id": "req_7",
+      "_type": "request",
+      "name": "Logout User",
+      "url": "{{ base_url }}/logout",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer YOUR_AUTH_TOKEN"
+        }
+      ]
+    }
+  ]
+}
