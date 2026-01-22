@@ -1,7 +1,4 @@
-<video controls autoplay>
-  <source src="demo-app.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Demo Aplikasi](demo-app.gif)
 
 # API Involuntir
 
@@ -19,7 +16,7 @@ Ini adalah API REST sederhana untuk sistem Manajemen Acara Relawan, dibangun den
 ## Menjalankan proyek dengan Docker
 
 1.  Pastikan Docker sudah terinstal dan berjalan.
-2.  Bangun citra dan jalankan kontainer: `docker-compose up -d --build`
+2.  Bangun Image dan jalankan kontainer: `docker-compose up -d --build`
 3.  Aplikasi akan tersedia di `http://localhost:8000`.
 
 ## Titik Akhir API (API Endpoints)
